@@ -36,7 +36,7 @@ public class AdminContentRepositoryImpl implements AdminContentRepository {
 
 	@Override
 	public Map<String, Object> createContent(Request request, String contenttype) {
-		return createContent(request.getVirtualHost(), contenttype, request.getBodyAsMap());
+		return createContent(request.getVirtualHost(), contenttype, request.getBodyAsMap().toBlocking().last());
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class AdminContentRepositoryImpl implements AdminContentRepository {
 
 	@Override
 	public Map<String, Object> updateContent(Request request, String contenttype, String id) {
-		return updateContent(request.getVirtualHost(), contenttype, id, request.getBodyAsMap());
+		return updateContent(request.getVirtualHost(), contenttype, id, request.getBodyAsMap().toBlocking().last());
 	}
 
 	@Override

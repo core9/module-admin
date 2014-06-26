@@ -32,7 +32,7 @@ public class AdminConfigRepositoryImpl implements AdminConfigRepository {
 	
 	@Override
 	public Map<String, Object> createConfig(Request request, String configtype) {
-		return createConfig(request.getVirtualHost(), configtype, request.getBodyAsMap());
+		return createConfig(request.getVirtualHost(), configtype, request.getBodyAsMap().toBlocking().last());
 	}
 	
 	@Override
@@ -57,7 +57,7 @@ public class AdminConfigRepositoryImpl implements AdminConfigRepository {
 	
 	@Override
 	public Map<String, Object> updateConfig(Request request, String configtype, String id) {
-		return updateConfig(request.getVirtualHost(), configtype, id, request.getBodyAsMap());
+		return updateConfig(request.getVirtualHost(), configtype, id, request.getBodyAsMap().toBlocking().last());
 	}
 		
 	@Override

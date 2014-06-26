@@ -4,9 +4,9 @@ import io.core9.core.boot.CoreBootStrategy;
 import io.core9.module.auth.AuthenticationPlugin;
 import io.core9.module.auth.User;
 import io.core9.plugin.server.HostManager;
+import io.core9.plugin.server.Server;
 import io.core9.plugin.server.handler.Middleware;
 import io.core9.plugin.server.request.Request;
-import io.core9.plugin.server.vertx.VertxServer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +24,7 @@ public class AdminDispatcherImpl extends CoreBootStrategy implements AdminDispat
 	private static final Map<String, AdminPlugin> adminplugins = new HashMap<String, AdminPlugin>();
 
 	@InjectPlugin
-	private VertxServer server;
+	private Server server;
 	
 	@InjectPlugin
 	private HostManager manager;
