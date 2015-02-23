@@ -56,14 +56,12 @@ public class AdminDispatcherImpl extends CoreBootStrategy implements AdminDispat
 			public void handle(Request request) {
 				User user = authentication.getUser(request);
 				if (user.isPermitted("dashboard:access") || (System.getProperty("DEBUG") != null && System.getProperty("DEBUG").equals("true"))) {
-					adminplugins.get(request.getParams().get("controller")).handle(request);
+					adminplugins.get(request.getPathParams().get("controller")).handle(request);
 				} else {
 					request.getResponse().setStatusCode(401);
 					request.getResponse().setStatusMessage("You are not authorized to view admin data");
 				}
 			}
 		});
-		//FIXME Only make install available when a key is presented
-		server.use("/install", manager.getInstallationProcedure());
 	}
 }

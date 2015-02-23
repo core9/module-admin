@@ -19,7 +19,7 @@ public class AdminConfigPluginImpl extends AbstractAdminPlugin implements
 
 	@Override
 	protected void process(Request request) {
-		if (request.getParams().get("listtypes") != null) {
+		if (request.getQueryParams().get("listtypes") != null) {
 			request.getResponse().sendJsonArray(repository.getConfigTypes(request.getVirtualHost()));
 		} else {
 			request.getResponse().setStatusCode(404);
