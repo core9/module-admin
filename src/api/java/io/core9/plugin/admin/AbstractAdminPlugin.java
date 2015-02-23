@@ -6,8 +6,8 @@ public abstract class AbstractAdminPlugin implements AdminPlugin {
 	
 	@Override
 	public void handle(Request request) {
-		String type = (String) request.getParams().get("type");
-		String id = (String) request.getParams().get("id");
+		String type = (String) request.getPathParams().get("type");
+		String id = (String) request.getPathParams().get("id");
 		if(type == null) {
 			process(request);
 		} else if (id == null) {
